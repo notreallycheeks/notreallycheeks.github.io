@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BasisVR Contributions | Cheeks Portfolio</title>
+    <meta name="description" content="Open-source contributions to BasisVR - IK systems and network jitter resolution">
+    <link rel="stylesheet" href="../css/style.css?v=8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo"><img src="../assets/images/logo.png" alt="Cheeks" class="logo-img" width="36" height="36">Cheeks</a>
+            <div class="nav-links">
+                <a href="/#about">About</a>
+                <a href="/#projects">Projects</a>
+                <a href="https://github.com/notreallycheeks" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header" style="background: linear-gradient(to bottom, rgba(10, 10, 15, 0.6), rgba(10, 10, 15, 0.85)), url('../assets/images/basisvr-bg.png') center center / cover no-repeat;">
+        <div class="container">
+            <a href="/" class="back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Portfolio
+            </a>
+            <h1>BasisVR</h1>
+            <p class="lead">An open-source social VR framework that allows anyone to create and deploy their own social VR platform with ease.</p>
+            <div class="meta">
+                <span><strong>Role:</strong> Contributor</span>
+                <span><strong>License:</strong> MIT Open-Source</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>About BasisVR</h2>
+            <p>BasisVR is an ambitious open-source project that democratizes social VR development. It provides a complete framework for building social VR platforms, handling everything from networking and avatar systems to audio processing and cross-platform VR support.</p>
+            <p>Built on Unity 6 with support for OpenXR, SteamVR, and Meta Quest, BasisVR enables developers to create their own social VR experiences without starting from scratch.</p>
+
+            <div class="project-links" style="margin-top: 32px;">
+                <a href="https://github.com/basisvr/basis" target="_blank" rel="noopener" class="btn btn-primary">View Repository</a>
+                <a href="https://github.com/BasisVR/Basis/commits/developer/?author=notreallycheeks" target="_blank" rel="noopener" class="btn btn-secondary">My Commits</a>
+                <a href="https://discord.gg/v6ve6WT562" target="_blank" rel="noopener" class="btn btn-secondary">Discord</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Technologies</h2>
+            <p>BasisVR leverages a comprehensive stack of technologies for high-performance social VR.</p>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h4>Unity 6 + C#</h4>
+                    <p>Built on the latest Unity version with C# as the primary language, enabling rapid development and cross-platform deployment.</p>
+                </div>
+                <div class="tech-card">
+                    <h4>Unity Burst Compiler</h4>
+                    <p>High-performance LLVM-based compiler that translates IL/.NET bytecode to highly optimized native code, critical for real-time VR performance.</p>
+                </div>
+                <div class="tech-card">
+                    <h4>OpenXR + SteamVR</h4>
+                    <p>Cross-platform VR standards ensuring compatibility with major VR headsets including Quest, Index, Vive, and Windows Mixed Reality.</p>
+                </div>
+                <div class="tech-card">
+                    <h4>LiteNetLib</h4>
+                    <p>Lightweight reliable UDP networking library for low-latency multiplayer communication essential in social VR.</p>
+                </div>
+                <div class="tech-card">
+                    <h4>Opus Audio Codec</h4>
+                    <p>Industry-leading audio codec for high-quality, low-latency voice communication between users.</p>
+                </div>
+                <div class="tech-card">
+                    <h4>Steam Audio</h4>
+                    <p>Spatial audio solution providing realistic 3D sound propagation, occlusion, and HRTF rendering for immersive experiences.</p>
+                </div>
+                <div class="tech-card">
+                    <h4>One Euro Filter</h4>
+                    <p>Signal processing algorithm for smooth motion filtering with minimal latency, crucial for responsive avatar movement.</p>
+                </div>
+                <div class="tech-card">
+                    <h4>IK Systems</h4>
+                    <p>Inverse Kinematics systems for realistic avatar body positioning based on tracked head and hand positions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>My Contributions</h2>
+
+            <div class="contribution-card">
+                <span class="contribution-date">January 2025</span>
+                <h3>Burst-Compiled One Euro Filter for Network Jitter Resolution</h3>
+
+                <h4 style="color: var(--color-primary); margin: 24px 0 12px;">The Problem</h4>
+                <p>Remote avatars in the framework experienced visible micro-jitters caused by network compression artifacts. When avatar position and rotation data is transmitted over the network, compression introduces small inaccuracies that manifest as stuttering movements, breaking immersion and making avatars appear unnatural.</p>
+
+                <h4 style="color: var(--color-primary); margin: 24px 0 12px;">The Solution</h4>
+                <p>Implemented a <strong>Burst-compiled One Euro Filter</strong> to smooth incoming network data while maintaining responsiveness. The One Euro Filter is an adaptive low-pass filter that adjusts its cutoff frequency based on input velocity - applying heavy smoothing during slow movements (when jitter is most visible) and minimal filtering during fast movements (to preserve responsiveness).</p>
+
+                <h4 style="color: var(--color-primary); margin: 24px 0 12px;">Why Burst Compilation Matters</h4>
+                <p>The filter runs on every networked avatar, every frame. In a social VR environment with dozens of users, this means hundreds of filter calculations per frame. By making the One Euro Filter <strong>Burst-compatible</strong>, the code is compiled to highly optimized SIMD-vectorized native code, achieving near-C++ performance while remaining in the managed C# ecosystem.</p>
+
+                <ul>
+                    <li>Eliminated visible micro-jitters across all networked avatars</li>
+                    <li>Achieved Burst compilation compatibility for maximum performance</li>
+                    <li>Tuned filter parameters for optimal balance between smoothness and latency</li>
+                    <li>Switched from deltaTime to interpolation time for more consistent filtering</li>
+                </ul>
+            </div>
+
+            <div class="contribution-card">
+                <span class="contribution-date">July 2025</span>
+                <h3>Avatar Driver Architecture Refactor</h3>
+
+                <h4 style="color: var(--color-primary); margin: 24px 0 12px;">The Change</h4>
+                <p>Refactored the avatar driver system by splitting rig logic into a dedicated <code>LocalRigDriver</code> separate from <code>LocalAvatarDriver</code>. This architectural improvement provides cleaner separation of concerns and better maintainability.</p>
+
+                <ul>
+                    <li>Split monolithic avatar driver into focused, single-responsibility components</li>
+                    <li>Improved code organization for the avatar and rig systems</li>
+                    <li>Fixed Steam integration issues as part of the refactor</li>
+                    <li>Enhanced the <code>BasisLocalAvatarDriver</code> for better extensibility</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Commit History</h2>
+            <p>Complete list of my contributions to the BasisVR framework.</p>
+
+            <div class="commit-list">
+                <div class="commit-item">
+                    <span class="commit-date">Jul 2, 2025</span>
+                    <div class="commit-message">
+                        <a href="https://github.com/BasisVR/Basis/pull/291" target="_blank" rel="noopener">Split Rig Logic Into LocalRigDriver from LocalAvatarDriver (#291)</a>
+                    </div>
+                </div>
+                <div class="commit-item">
+                    <span class="commit-date">Jan 13, 2025</span>
+                    <div class="commit-message">
+                        Change to interpTime from deltaTime and tweaked filter values
+                    </div>
+                </div>
+                <div class="commit-item">
+                    <span class="commit-date">Jan 13, 2025</span>
+                    <div class="commit-message">
+                        Added [ReadOnly] to InputValues
+                    </div>
+                </div>
+                <div class="commit-item">
+                    <span class="commit-date">Jan 13, 2025</span>
+                    <div class="commit-message">
+                        Removed commented code
+                    </div>
+                </div>
+                <div class="commit-item">
+                    <span class="commit-date">Jan 13, 2025</span>
+                    <div class="commit-message">
+                        Became One With The BurstCompiled Euro Filter
+                    </div>
+                </div>
+                <div class="commit-item">
+                    <span class="commit-date">Jan 8, 2025</span>
+                    <div class="commit-message">
+                        Fixed default values for Euro Filter
+                    </div>
+                </div>
+                <div class="commit-item">
+                    <span class="commit-date">Jan 8, 2025</span>
+                    <div class="commit-message">
+                        Added OneEuroFilter and Removed Micro Jitters
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 32px;">
+                <a href="https://github.com/BasisVR/Basis/commits/developer/?author=notreallycheeks" target="_blank" rel="noopener" class="btn btn-primary">View All Commits on GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo"><img src="../assets/images/logo.png" alt="Cheeks" class="logo-img" width="36" height="36">Cheeks</span>
+                    <p>Building the future of immersive experiences.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/notreallycheeks" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://x.com/notreallycheeks" target="_blank" rel="noopener">Twitter/X</a>
+                    <a href="https://discord.com/users/notreallycheeks" target="_blank" rel="noopener">Discord</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cheeks. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
