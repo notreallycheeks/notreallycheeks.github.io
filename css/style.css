@@ -96,8 +96,11 @@ img {
 .logo-img {
     width: 36px;
     height: 36px;
+    max-width: 36px;
+    max-height: 36px;
     border-radius: 50%;
     object-fit: cover;
+    flex-shrink: 0;
 }
 
 .nav-links {
@@ -445,6 +448,8 @@ section {
 .footer-logo .logo-img {
     width: 32px;
     height: 32px;
+    max-width: 32px;
+    max-height: 32px;
 }
 
 .footer-brand p {
