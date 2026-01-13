@@ -101,6 +101,12 @@ img {
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
+    border: 2px solid var(--color-primary);
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.4);
+}
+
+.nav-logo, .footer-logo {
+    align-items: center;
 }
 
 .nav-links {
