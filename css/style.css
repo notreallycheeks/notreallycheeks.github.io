@@ -84,8 +84,8 @@ img {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 1.5rem;
-    font-weight: 800;
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
     letter-spacing: 2px;
     background: var(--color-gradient);
     -webkit-background-clip: text;
@@ -433,8 +433,8 @@ section {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 1.25rem;
-    font-weight: 800;
+    font-family: 'VT323', monospace;
+    font-size: 1.75rem;
     letter-spacing: 2px;
     background: var(--color-gradient);
     -webkit-background-clip: text;
