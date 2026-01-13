@@ -81,6 +81,9 @@ img {
 }
 
 .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 1.5rem;
     font-weight: 800;
     letter-spacing: 2px;
@@ -88,6 +91,13 @@ img {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+.logo-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .nav-links {
@@ -420,6 +430,9 @@ section {
 }
 
 .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 1.25rem;
     font-weight: 800;
     letter-spacing: 2px;
@@ -427,6 +440,11 @@ section {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+.footer-logo .logo-img {
+    width: 32px;
+    height: 32px;
 }
 
 .footer-brand p {
