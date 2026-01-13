@@ -753,6 +753,30 @@ section {
     display: block;
 }
 
+/* ===== Video Gallery ===== */
+.video-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.video-gallery-item {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background: var(--color-bg-card);
+}
+
+.video-gallery-item iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 /* ===== Commit List ===== */
 .commit-list {
     margin: 24px 0;
