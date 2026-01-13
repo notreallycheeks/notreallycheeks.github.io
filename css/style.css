@@ -677,6 +677,47 @@ section {
     margin: 0;
 }
 
+/* ===== Image Gallery ===== */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.gallery-item {
+    display: block;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: var(--color-bg-card);
+    transition: var(--transition);
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-lg);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===== Video Showcase ===== */
+.video-showcase {
+    margin-top: 24px;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    background: var(--color-bg-card);
+}
+
+.video-showcase video {
+    width: 100%;
+    display: block;
+}
+
 /* ===== Commit List ===== */
 .commit-list {
     margin: 24px 0;
