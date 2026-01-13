@@ -371,7 +371,7 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: var(--transition);
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 350px 1fr;
 }
 
 .project-card:hover {
@@ -382,7 +382,7 @@ section {
 
 .project-featured {
     grid-column: 1 / -1;
-    grid-template-columns: 400px 1fr;
+    grid-template-columns: 350px 1fr;
 }
 
 .project-image {
@@ -415,7 +415,7 @@ section {
 }
 
 .project-with-video {
-    grid-template-columns: 400px 1fr;
+    grid-template-columns: 350px 1fr;
 }
 
 @media (max-width: 900px) {
