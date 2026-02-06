@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyaoshi | Cheeks Portfolio</title>
+    <meta name="description" content="A cute desktop photo uploader for Myoshi.co built with Tauri and SvelteKit">
+    <link rel="stylesheet" href="../css/style.css?v=8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo"><img src="../assets/images/logo.png" alt="Cheeks" class="logo-img" width="36" height="36">Cheeks</a>
+            <div class="nav-links">
+                <a href="/#about">About</a>
+                <a href="/#projects">Projects</a>
+                <a href="https://github.com/notreallycheeks" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header" style="background: linear-gradient(135deg, #f5f0fa 0%, #e8ddf2 50%, #c9b8db 100%);">
+        <div class="container" style="text-align: center;">
+            <a href="/" class="back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Portfolio
+            </a>
+            <img src="../assets/images/nyaoshi-mascot.png" alt="Nyaoshi" style="width: 150px; height: 150px; margin: 0 auto 24px;">
+            <h1 style="color: #7a5a9a;">Nyaoshi</h1>
+            <p class="lead" style="color: #4a4a4a;">A cute desktop app that watches for new photos and uploads them to Myoshi.co</p>
+            <div class="meta" style="color: #7a7a7a;">
+                <span><strong>Role:</strong> Sole Developer</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>About Nyaoshi</h2>
+            <p><strong>Nyaoshi</strong> (a playful cat-themed twist on Myoshi) is a desktop utility that makes uploading photos to your Myoshi albums effortless. Just drop images into a watched folder and they'll be queued up for upload automatically.</p>
+            <p>Built with a focus on being cute, lightweight, and unobtrusive - Nyaoshi lives in your system tray and quietly watches for new photos, uploading them in the background or queuing them for your review.</p>
+
+            <div class="project-links" style="margin-top: 32px;">
+                <a href="https://jinxxy.com/notreallycheeks/nyaoshi" target="_blank" rel="noopener" class="btn btn-primary">Download</a>
+                <a href="https://myoshi.co" target="_blank" rel="noopener" class="btn btn-secondary">Myoshi.co</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Features</h2>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h4>Directory Watching</h4>
+                    <p>Monitor a folder and all its subfolders for new images. When a new photo is detected, it's automatically added to the queue.</p>
+                </div>
+                <div class="tech-card">
+                    <h4>Auto-Upload Mode</h4>
+                    <p>Set a default album and let Nyaoshi automatically upload new photos without any interaction required.</p>
+                </div>
+                <div class="tech-card">
+                    <h4>Queue Mode</h4>
+                    <p>Review photos before uploading. Approve or skip each photo and select which album to upload to.</p>
+                </div>
+                <div class="tech-card">
+                    <h4>Events Timeline</h4>
+                    <p>View upcoming Myoshi events in a beautiful timeline format with live/soon status badges.</p>
+                </div>
+                <div class="tech-card">
+                    <h4>Auto-Scaling</h4>
+                    <p>Large images over 25MB are automatically scaled down to meet upload requirements.</p>
+                </div>
+                <div class="tech-card">
+                    <h4>System Tray</h4>
+                    <p>Runs quietly in the background. Left-click to show, right-click for quick actions like quit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Technologies</h2>
+            <p>Nyaoshi is built with modern technologies for a fast, native experience.</p>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h4>Tauri v2</h4>
+                    <p>Rust-based framework for building lightweight, secure desktop applications with web technologies.</p>
+                </div>
+                <div class="tech-card">
+                    <h4>Rust</h4>
+                    <p>Backend logic including file watching, image processing, and API communication - all in safe, performant Rust.</p>
+                </div>
+                <div class="tech-card">
+                    <h4>SvelteKit</h4>
+                    <p>Modern frontend framework with Svelte 5 runes for reactive, component-based UI development.</p>
+                </div>
+                <div class="tech-card">
+                    <h4>TypeScript</h4>
+                    <p>Type-safe frontend code with full IDE support and compile-time error checking.</p>
+                </div>
+                <div class="tech-card">
+                    <h4>GraphQL</h4>
+                    <p>Integration with Myoshi.co's GraphQL API for fetching albums, events, and uploading photos.</p>
+                </div>
+                <div class="tech-card">
+                    <h4>notify (Rust)</h4>
+                    <p>Cross-platform file system notification library for efficient directory watching.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>How to Use</h2>
+            <ol style="line-height: 2; padding-left: 24px;">
+                <li>Launch Nyaoshi (it lives in your system tray)</li>
+                <li>Enter your Myoshi API key in settings</li>
+                <li>Pick a folder to watch</li>
+                <li>Choose auto-upload or queue mode</li>
+                <li>Drop images in — they'll appear in the queue!</li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Downloads</h2>
+            <p>Nyaoshi is available for Windows, macOS, and Linux.</p>
+
+            <div class="tech-grid" style="margin-top: 24px;">
+                <div class="tech-card">
+                    <h4>Windows</h4>
+                    <p><code>Nyaoshi_x.x.x_x64-setup.exe</code></p>
+                </div>
+                <div class="tech-card">
+                    <h4>macOS (Apple Silicon)</h4>
+                    <p><code>Nyaoshi_x.x.x_aarch64.dmg</code></p>
+                </div>
+                <div class="tech-card">
+                    <h4>macOS (Intel)</h4>
+                    <p><code>Nyaoshi_x.x.x_x64.dmg</code></p>
+                </div>
+                <div class="tech-card">
+                    <h4>Linux</h4>
+                    <p><code>Nyaoshi_x.x.x_amd64.AppImage</code></p>
+                </div>
+            </div>
+
+            <div style="margin-top: 32px;">
+                <a href="https://jinxxy.com/notreallycheeks/nyaoshi" target="_blank" rel="noopener" class="btn btn-primary">Download from Jinxxy</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo"><img src="../assets/images/logo.png" alt="Cheeks" class="logo-img" width="36" height="36">Cheeks</span>
+                    <p>Building the future of immersive experiences.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/notreallycheeks" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://x.com/notreallycheeks" target="_blank" rel="noopener">Twitter/X</a>
+                    <a href="https://discord.com/users/notreallycheeks" target="_blank" rel="noopener">Discord</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cheeks. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
