@@ -3,123 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cheeksy's VPM Repository</title>
+    <title>VPM Registry | Cheeks</title>
+    <meta name="description" content="Cheeksy's VRChat Package Manager registry - add it to the VRChat Creator Companion to install my Unity packages">
+    <link rel="stylesheet" href="../css/style.css?v=8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=VT323&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .vcc-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            justify-content: center;
+            margin-top: 24px;
         }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            min-height: 100vh;
-            color: #fff;
-            padding: 2rem;
+        .repo-url-box {
+            display: flex;
+            align-items: stretch;
+            margin: 24px auto 0;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.35);
+            max-width: 560px;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(90deg, #ff6b6b, #feca57);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .subtitle {
-            color: #888;
-            margin-bottom: 2rem;
-        }
-        .add-button {
-            display: inline-block;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: transform 0.2s, box-shadow 0.2s;
-            margin-bottom: 2rem;
-        }
-        .add-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-        }
-        .manual-url {
-            background: rgba(255,255,255,0.1);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            font-family: monospace;
+        .repo-url-box code {
+            flex: 1;
+            padding: 14px 18px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.95rem;
+            color: var(--color-primary);
             word-break: break-all;
+            user-select: all;
+            align-self: center;
         }
-        .packages {
-            margin-top: 2rem;
-        }
-        .package {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        .package h2 {
-            color: #feca57;
-            margin-bottom: 0.5rem;
-        }
-        .package p {
-            color: #aaa;
-            margin-bottom: 1rem;
-        }
-        .package-meta {
+        .repo-url-box button {
+            border: none;
+            border-left: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--color-text);
+            font-family: var(--font-main);
             font-size: 0.9rem;
-            color: #666;
+            font-weight: 600;
+            padding: 0 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
         }
-        .badge {
-            display: inline-block;
-            background: rgba(102, 126, 234, 0.3);
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-right: 0.5rem;
+        .repo-url-box button:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+        .vcc-note {
+            margin-top: 12px;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+        .install-steps {
+            counter-reset: step;
+            list-style: none;
+            padding: 0;
+            margin-top: 16px;
+        }
+        .install-steps li {
+            position: relative;
+            padding: 0 0 0 52px;
+            margin-bottom: 18px;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+        .install-steps li strong {
+            color: var(--color-text);
+        }
+        .install-steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--color-gradient);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        .pkg-card {
+            background: var(--color-bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--border-radius);
+            padding: 28px;
+            margin-top: 24px;
+            transition: var(--transition);
+        }
+        .pkg-card:hover {
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+        .pkg-card h3 {
+            margin: 0 0 4px;
+        }
+        .pkg-card .pkg-id {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+        .pkg-card p {
+            color: var(--color-text-muted);
+            margin: 14px 0 18px;
+            line-height: 1.6;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Cheeksy's VPM Repository</h1>
-        <p class="subtitle">VRChat Creator Companion Packages</p>
-
-        <a href="vcc://vpm/addRepo?url=https://cheeksy.dev/vpm/index.json" class="add-button">
-            Add to VCC
-        </a>
-
-        <div class="manual-url">
-            <strong>Manual URL:</strong><br>
-            https://cheeksy.dev/vpm/index.json
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo"><img src="../assets/images/logo.png" alt="Cheeks" class="logo-img" width="36" height="36">Cheeks</a>
+            <div class="nav-links">
+                <a href="/#about">About</a>
+                <a href="/#projects">Projects</a>
+                <a href="https://github.com/notreallycheeks" target="_blank" rel="noopener">GitHub</a>
+            </div>
         </div>
+    </nav>
 
-        <div class="packages">
-            <h2 style="margin-bottom: 1rem;">Available Packages</h2>
+    <header class="page-header">
+        <div class="container">
+            <a href="/" class="back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Portfolio
+            </a>
+            <h1>Cheeksy's VPM Registry</h1>
+            <p class="lead">My Unity packages for VRChat, installable straight from the VRChat Creator Companion. Add the registry once and every package (and update) shows up in the VCC automatically.</p>
 
-            <div class="package">
-                <h2>Baked Volumetrics</h2>
-                <p>A lightweight baked volumetric fog solution with support for exclusion volumes. Perfect for creating atmospheric fog that respects building interiors and other exclusion zones.</p>
-                <div class="package-meta">
-                    <span class="badge">v1.0.0</span>
-                    <span class="badge">Unity 2019.4+</span>
-                    <span class="badge">VRChat</span>
+            <div class="vcc-actions">
+                <a href="vcc://vpm/addRepo?url=https://vpm.cheeksy.dev/index.json" class="btn btn-primary">Add to VCC</a>
+                <a href="https://vpm.cheeksy.dev/index.json" target="_blank" rel="noopener" class="btn btn-secondary">View index.json</a>
+            </div>
+
+            <div class="repo-url-box">
+                <code id="repo-url">https://vpm.cheeksy.dev/index.json</code>
+                <button id="copy-btn" type="button" aria-label="Copy repository URL">Copy</button>
+            </div>
+            <p class="vcc-note">The <strong>Add to VCC</strong> button needs the VRChat Creator Companion installed &mdash; your browser will ask to open it.</p>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Manual Setup</h2>
+            <p>If the one-click button doesn't work, adding the registry by hand takes under a minute:</p>
+            <ol class="install-steps">
+                <li>Open the <strong>VRChat Creator Companion</strong> and go to <strong>Settings &rarr; Packages</strong>.</li>
+                <li>Click <strong>Add Repository</strong>, paste <strong>https://vpm.cheeksy.dev/index.json</strong>, and confirm.</li>
+                <li>Open any project's <strong>Manage Project</strong> screen &mdash; my packages now appear in the list, ready to install.</li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>Available Packages</h2>
+
+            <div class="pkg-card">
+                <h3>Baked Volumetrics</h3>
+                <span class="pkg-id">dev.cheeksy.bakedvolumetrics</span>
+                <p>A lightweight baked volumetric fog solution with support for exclusion volumes &mdash; fog that respects building interiors and other zones you carve out. Fork of frostbone25's Unity-Baked-Volumetrics with fog exclusion zones and Light Volumes integration.</p>
+                <div class="project-tech">
+                    <span>v1.0.0</span>
+                    <span>Unity 2019.4+</span>
+                    <span>VRChat Worlds</span>
+                </div>
+                <div class="project-links" style="margin-top: 18px;">
+                    <a href="https://github.com/notreallycheeks/Unity-Baked-Volumetrics" target="_blank" rel="noopener" class="btn btn-small">GitHub</a>
+                    <a href="https://github.com/notreallycheeks/Unity-Baked-Volumetrics/releases" target="_blank" rel="noopener" class="btn btn-small">Releases</a>
                 </div>
             </div>
         </div>
+    </section>
 
-        <p style="margin-top: 2rem; color: #666; font-size: 0.9rem;">
-            Fork of <a href="https://github.com/frostbone25/Unity-Baked-Volumetrics" style="color: #667eea;">frostbone25's Unity-Baked-Volumetrics</a>
-        </p>
-    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo"><img src="../assets/images/logo.png" alt="Cheeks" class="logo-img" width="36" height="36">Cheeks</span>
+                    <p>Building the future of immersive experiences.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/notreallycheeks" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://x.com/notreallycheeks" target="_blank" rel="noopener">Twitter/X</a>
+                    <a href="https://discord.com/users/notreallycheeks" target="_blank" rel="noopener">Discord</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cheeks. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('copy-btn').addEventListener('click', function () {
+            var url = document.getElementById('repo-url').textContent;
+            var btn = this;
+            function done() {
+                btn.textContent = 'Copied!';
+                setTimeout(function () { btn.textContent = 'Copy'; }, 2000);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(done);
+            } else {
+                var range = document.createRange();
+                range.selectNodeContents(document.getElementById('repo-url'));
+                var sel = window.getSelection();
+                sel.removeAllRanges();
+                sel.addRange(range);
+                document.execCommand('copy');
+                sel.removeAllRanges();
+                done();
+            }
+        });
+    </script>
 </body>
 </html>
